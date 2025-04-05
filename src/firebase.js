@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth/cordova";
 import { addDoc, collection, getFirestore } from "firebase/firestore/lite";
+import { toast } from "react-toastify";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCR4BhUskRJPijqaBI-6dn-hChxFpz7Ltg",
@@ -26,8 +27,9 @@ const signup = async (name, email, password) => {
             authProvider: "local",
             email
         })
-    } catch (err) {
-        console.log('Something went wrong',err)
+    } catch (error) {
+        console.log('Something went wrong',error)
+        toast.error(error.code)
     }
 }
 
@@ -36,7 +38,8 @@ const login = async (email, password) => {
         await signInWithEmailAndPassword(auth, email, password)
 
     } catch (error) {
-        console.log('Something went wrong',err)
+        console.log('Something went wrong',error)
+        toast.error(error.code)
     }
 }
 
