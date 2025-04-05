@@ -29,7 +29,7 @@ const signup = async (name, email, password) => {
         })
     } catch (error) {
         console.log('Something went wrong',error)
-        toast.error(error.code)
+        toast.error(error.code.split('/')[1].split('-').join(" "))
     }
 }
 
@@ -39,7 +39,7 @@ const login = async (email, password) => {
 
     } catch (error) {
         console.log('Something went wrong',error)
-        toast.error(error.code)
+        toast.error(error.code.split('/')[1].split('-').join(" "))
     }
 }
 
